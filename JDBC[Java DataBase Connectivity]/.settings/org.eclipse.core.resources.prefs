@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/basic/01.address_create_drop.sql=UTF-8
+encoding//src/basic/01.address_insert_update_delete_select.sql=UTF-8
+encoding//src/connection/transaction_accountAB.sql=UTF-8
+encoding//src/resultset/02.s_product.sql=UTF-8
