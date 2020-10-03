@@ -16,7 +16,7 @@ public class UserListController implements Controller {
 		String forwardPath="";
 		try {
 			UserService userService = new UserService();
-			ArrayList<User> userList = userService.findUserList();
+			ArrayList<User> userList = (ArrayList<User>) userService.findUserList();
 			request.setAttribute("userList", userList);
 			forwardPath="forward:/WEB-INF/views/user_list.jsp";
 		} catch (Exception e) {

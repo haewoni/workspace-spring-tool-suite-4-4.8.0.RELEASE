@@ -1,6 +1,6 @@
 ﻿package com.itwill.user;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.itwill.user.exception.ExistedUserException;
 import com.itwill.user.exception.PasswordMismatchException;
@@ -32,7 +32,7 @@ public class UserService {
 	/*
 	 * 회원리스트
 	 */
-	public ArrayList<User> findUserList() throws Exception{
+	public List<User> findUserList() throws Exception{
 		return userDao.findUserList();
 	}
 	/*
