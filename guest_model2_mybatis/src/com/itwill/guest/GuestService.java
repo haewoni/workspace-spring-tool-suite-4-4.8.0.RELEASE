@@ -1,6 +1,7 @@
 package com.itwill.guest;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GuestService {
 	private GuestDao guestDao;
@@ -20,7 +21,7 @@ public class GuestService {
 	public Guest selectByNo(int no) throws Exception{
 		return guestDao.selectByNo(no);
 	}
-	public ArrayList<Guest> selectAll() throws Exception{
+	public List<Guest> selectAll() throws Exception{
 		return guestDao.selectAll();
 	}
 	/*

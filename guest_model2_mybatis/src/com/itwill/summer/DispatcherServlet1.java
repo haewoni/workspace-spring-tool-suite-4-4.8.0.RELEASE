@@ -2,6 +2,7 @@ package com.itwill.summer;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -74,7 +75,7 @@ public class DispatcherServlet1 extends HttpServlet {
 			/********************guest_list.do***********************/
 			try {
 				GuestService guestService=new GuestService();
-				ArrayList<Guest> guestList=guestService.selectAll();
+				List<Guest> guestList=guestService.selectAll();
 				request.setAttribute("guestList", guestList);
 				forwardPath="forward:/WEB-INF/views/guest_list.jsp";
 			}catch (Exception e) {

@@ -19,4 +19,11 @@ public interface GuestMapper {
 			guest_no=#{guest_no}
 		</select>
 	 */
+	public int insertGuest(Guest guest);
+	
+	public int updateGuest(Guest updateGuest);
+	
+	public int deleteGuest(int no);
+	
+	
 }

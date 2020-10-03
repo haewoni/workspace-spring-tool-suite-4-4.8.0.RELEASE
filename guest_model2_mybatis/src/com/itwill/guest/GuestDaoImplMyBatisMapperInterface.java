@@ -1,4 +1,4 @@
-package com.itwill.guest;
+ package com.itwill.guest;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -25,44 +25,46 @@ public class GuestDaoImplMyBatisMapperInterface implements GuestDao {
 			e.printStackTrace();
 		}
 	}
+	/*
+	 * insert
+	 */
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
-		int insertRowCount =0;
-		insertRowCount = guestMapper.insertGuest(guest);
-		return insertRowCount;
+		return sqlSessionFactory.openSession(true).getMapper(GuestMapper.class).insertGuest(guest);
 	}
-
+	/*
+	 * selectByNo
+	 */
 	@Override
 	public Guest selectByNo(int no) throws Exception {
 		return sqlSessionFactory.openSession(true).getMapper(GuestMapper.class).selectByNo(no);
 	}
-
+	/*
+	 * selectAll
+	 */
 	@Override
-	public ArrayList<Guest> selectAll() throws Exception {
+	public List<Guest> selectAll() throws Exception {
 		
-		ArrayList<Guest> guestList1= new ArrayList<Guest>();
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
-		ArrayList<Guest> guestList2=(ArrayList<Guest>)guestList1;
-		return guestList2;
+//		ArrayList<Guest> guestList1= new ArrayList<Guest>();
+//		SqlSession sqlSession = sqlSessionFactory.openSession(true);
+//		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
+//		ArrayList<Guest> guestList2=(ArrayList<Guest>)guestList1;
+//		return guestList2;
+		return sqlSessionFactory.openSession(true).getMapper(GuestMapper.class).selectAll();
 	}
-
+	/*
+	 * update
+	 */
 	@Override
 	public int updateGuest(Guest updateGuest) throws Exception {
-		SqlSession sqlSession=sqlSessionFactory.openSession(true);
-		int updateRowCount=0;
-		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
-		guestMapper.updateGuest(updateGuest);
-		return updateRowCount;
+		return sqlSessionFactory.openSession(true).getMapper(GuestMapper.class).updateGuest(updateGuest);
 	}
-
+	/*
+	 * delete
+	 */
 	@Override
-	public int deleteGuest(int guest_no) throws Exception {
-		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int deleteRowCount = sqlSession.getMapper(GuestMapper.class).deleteGuest(guest_no);
-		return deleteRowCount;
+	public int deleteGuest(int no) throws Exception {
+		return sqlSessionFactory.openSession(true).getMapper(GuestMapper.class).deleteGuest(no);
 	}
 
 }
