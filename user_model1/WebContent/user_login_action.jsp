@@ -1,6 +1,6 @@
+<%@page import="com.itwill.user.exception.UserNotFoundException"%>
 <%@page import="com.itwill.user.User"%>
 <%@page import="com.itwill.user.exception.PasswordMismatchException"%>
-<%@page import="com.itwill.user.exception.UserNotFoundException"%>
 <%@page import="com.itwill.user.UserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
