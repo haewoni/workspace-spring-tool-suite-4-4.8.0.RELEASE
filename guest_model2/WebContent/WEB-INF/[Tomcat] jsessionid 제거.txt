@@ -1,0 +1,9 @@
+ <<톰캣 시작 후 URL에 jsessionid 가 붙어서 페이지를 못찾는 오류 발생시 대응방법>>
+
+1. 톰캣 filter를 통해 방지하는 방법
+    web.xml 파일맨마지막에 tracking-mode COOKIE 추가
+
+
+	<session-config>
+    	<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
