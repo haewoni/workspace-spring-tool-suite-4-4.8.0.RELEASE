@@ -9,7 +9,7 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		<h1>Welcome Spring MVC</h1><hr/>
+		<h1>Welcome Spring MVC[@Controller]</h1><hr/>
 		<a href='./'>메인메뉴</a>
 		<ol>
 			<li><a href='hello.do'>hello.do</a></li>
