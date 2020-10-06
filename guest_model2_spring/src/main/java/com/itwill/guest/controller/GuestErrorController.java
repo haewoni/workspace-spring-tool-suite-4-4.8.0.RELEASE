@@ -3,15 +3,20 @@ package com.itwill.guest.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.itwill.summer.Controller;
 
-public class GuestErrorController implements Controller {
+public class GuestErrorController implements org.springframework.web.servlet.mvc.Controller {
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, 
+									  HttpServletResponse response) {
 		/**************************************************/
 		String forwardPath="forward:/WEB-INF/views/guest_error.jsp";
-		return forwardPath;
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName(forwardPath);
+		return mv;
 	}
 
 }

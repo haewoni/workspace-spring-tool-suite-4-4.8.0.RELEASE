@@ -3,17 +3,32 @@ package com.itwill.guest.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+
 import com.itwill.guest.Guest;
 import com.itwill.guest.GuestService;
 import com.itwill.guest.GuestServiceImpl;
 import com.itwill.summer.Controller;
 
-public class GuestModifyActionController implements Controller {
+public class GuestModifyActionController implements org.springframework.web.servlet.mvc.Controller {
+	
+	private GuestService guestService;
+	public GuestModifyActionController() {
+		System.out.println("### GuestModifyActionController: 기본생성자호출");
+	}
+	
+	
+	public void setGuestService(GuestService guestService) {
+		this.guestService = guestService;
+		System.out.println("### GuestModifyActionController: setGuestService("+guestService+")메소드 호출");
+	}
+
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		String forwardPath="";
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		/******************guest_modify_action.do******************/
+		ModelAndView mv = new ModelAndView();
+		String forwardPath="";
 		if(request.getMethod().equalsIgnoreCase("GET")){
 			forwardPath="redirect:guest_main.do";
 		}else {
@@ -25,7 +40,6 @@ public class GuestModifyActionController implements Controller {
 				String guest_homepage=request.getParameter("guest_homepage");
 				String guest_title=request.getParameter("guest_title");
 				String guest_content=request.getParameter("guest_content");
-				GuestService guestService=new GuestServiceImpl();
 				int updateRowCount=
 						guestService.updateGuest(
 									new Guest(Integer.parseInt(guest_noStr),
@@ -39,7 +53,8 @@ public class GuestModifyActionController implements Controller {
 				forwardPath="forward:/WEB-INF/views/guest_error.jsp";
 			}
 		}
-		return forwardPath;
+		mv.setViewName(forwardPath);
+		return mv;
 	}
 
 }

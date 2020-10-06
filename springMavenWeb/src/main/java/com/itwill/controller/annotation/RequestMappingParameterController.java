@@ -46,7 +46,7 @@ public class RequestMappingParameterController {
 	}
 	
 	@RequestMapping(value="/model_attribute_guest_write_action.do",
-			method=RequestMethod.POST)	
+					method=RequestMethod.POST)	
 	public String model_attribute_guest_write_action(@ModelAttribute Guest guest) {
 		System.out.println("### @ModelAttribute Guest:"+guest);
 		 /*

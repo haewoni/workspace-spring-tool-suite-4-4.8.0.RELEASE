@@ -3,15 +3,28 @@ package com.itwill.guest.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.itwill.guest.GuestService;
 import com.itwill.guest.GuestServiceImpl;
-import com.itwill.summer.Controller;
 
 public class GuestRemoveActionController implements Controller {
+	private GuestService guestService;
+	public GuestRemoveActionController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public void setGuestService(GuestService guestService) {
+		this.guestService = guestService;
+	}
+
 
 	@Override
-	public String handleRequest(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		/********************guest_remove_action.do******************/
+		ModelAndView mv = new ModelAndView();
 		String forwardPath="";
 		if(request.getMethod().equalsIgnoreCase("GET")){
 			//response.sendRedirect("guest_main.do");
@@ -19,7 +32,6 @@ public class GuestRemoveActionController implements Controller {
 		}else {
 		    try{
 			    String guest_noStr = request.getParameter("guest_no");
-			    GuestService guestService=new GuestServiceImpl();
 			    guestService.deleteGuest(Integer.parseInt(guest_noStr));
 			    //response.sendRedirect("guest_list.do");
 			    forwardPath="redirect:guest_list.do";
@@ -29,7 +41,8 @@ public class GuestRemoveActionController implements Controller {
 		    	forwardPath="redirect:guest_error.do";
 		    }
 		}
-		return forwardPath;
+		mv.setViewName(forwardPath);
+		return mv;
 	}
 
 }
