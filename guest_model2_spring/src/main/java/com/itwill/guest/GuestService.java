@@ -2,7 +2,7 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
-public interface UserService {
+public interface GuestService {
 
 	/*
 	 * Create

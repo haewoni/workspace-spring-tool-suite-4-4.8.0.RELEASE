@@ -2,11 +2,17 @@ package com.itwill.guest;
 
 import java.util.ArrayList;
 
-public class GuestServiceImpl implements UserService {
+public class GuestServiceImpl implements GuestService {
 	private GuestDao guestDao;
 	public GuestServiceImpl() throws Exception {
-		guestDao=new GuestDaoImpl();
+		System.out.println("### GuestServiceImpl:기본생성자호출");
 	}
+	
+	public void setGuestDao(GuestDao guestDao) {
+		System.out.println("### GuestServiceImpl: setGuestDao("+guestDao+")메쏘드호출");
+		this.guestDao = guestDao;
+	}
+
 	/*
 	 * Create
 	 */

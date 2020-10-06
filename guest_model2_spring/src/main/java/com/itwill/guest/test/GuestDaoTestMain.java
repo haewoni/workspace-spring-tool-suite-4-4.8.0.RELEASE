@@ -7,6 +7,7 @@ import com.itwill.guest.GuestDaoImpl;
 public class GuestDaoTestMain {
 
 	public static void main(String[] args)throws Exception {
+		//GuestDao guestDao=new GuestDaoImplConnectionFactory();
 		GuestDao guestDao=new GuestDaoImpl();
 		System.out.println(guestDao.selectAll());
 		System.out.println("1.insert");

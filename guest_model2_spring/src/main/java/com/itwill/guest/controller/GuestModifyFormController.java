@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
+import com.itwill.guest.GuestService;
 import com.itwill.guest.GuestServiceImpl;
-import com.itwill.guest.UserService;
 import com.itwill.summer.Controller;
 
 public class GuestModifyFormController implements Controller {
@@ -19,7 +19,7 @@ public class GuestModifyFormController implements Controller {
 		}else {
 			try {
 				String guest_noStr = request.getParameter("guest_no");
-				UserService guestService=new GuestServiceImpl();
+				GuestService guestService=new GuestServiceImpl();
 				Guest guest=
 						guestService.selectByNo(Integer.parseInt(guest_noStr));
 				request.setAttribute("guest", guest);

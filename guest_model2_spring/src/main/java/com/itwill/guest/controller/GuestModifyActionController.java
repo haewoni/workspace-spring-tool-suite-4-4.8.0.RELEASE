@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
+import com.itwill.guest.GuestService;
 import com.itwill.guest.GuestServiceImpl;
-import com.itwill.guest.UserService;
 import com.itwill.summer.Controller;
 
 public class GuestModifyActionController implements Controller {
@@ -25,7 +25,7 @@ public class GuestModifyActionController implements Controller {
 				String guest_homepage=request.getParameter("guest_homepage");
 				String guest_title=request.getParameter("guest_title");
 				String guest_content=request.getParameter("guest_content");
-				UserService guestService=new GuestServiceImpl();
+				GuestService guestService=new GuestServiceImpl();
 				int updateRowCount=
 						guestService.updateGuest(
 									new Guest(Integer.parseInt(guest_noStr),

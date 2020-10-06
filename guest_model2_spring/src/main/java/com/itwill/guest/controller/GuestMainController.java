@@ -3,15 +3,20 @@ package com.itwill.guest.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itwill.summer.Controller;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
+
 
 public class GuestMainController implements Controller{
 	
-	public String handleRequest(HttpServletRequest request,
+	public ModelAndView handleRequest(HttpServletRequest request,
 								HttpServletResponse response) {
 		/********************guest_main.do********************/
 		String forwardPath="forward:/WEB-INF/views/guest_main.jsp";
-		return forwardPath;
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName(forwardPath);
+		return mv;
 	}
 
 }

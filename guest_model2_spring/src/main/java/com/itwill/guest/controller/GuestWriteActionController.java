@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.itwill.guest.Guest;
+import com.itwill.guest.GuestService;
 import com.itwill.guest.GuestServiceImpl;
-import com.itwill.guest.UserService;
 import com.itwill.summer.Controller;
 
 public class GuestWriteActionController implements Controller {
@@ -23,7 +23,7 @@ public class GuestWriteActionController implements Controller {
 			String guest_title = request.getParameter("guest_title");
 			String guest_content = request.getParameter("guest_content");
 			try {
-				UserService guestService = new GuestServiceImpl();
+				GuestService guestService = new GuestServiceImpl();
 				int insertRowCount = guestService
 						.insertGuest(new Guest(0, guest_name, "", guest_email, guest_homepage, guest_title, guest_content));
 				forwardPath="redirect:guest_list.do";

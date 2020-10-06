@@ -11,10 +11,15 @@ import javax.sql.DataSource;
 public class GuestDaoImpl implements GuestDao {
 	private DataSource dataSource;
 	public GuestDaoImpl() throws Exception {
-		InitialContext ic = new InitialContext();
-		dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/OracleDB");
-		// System.out.println("UserDao()생성자:" + this + "-->" + dataSource);
+		System.out.println("### GuestDaoImpl :기본생성자호출 ");
 	}
+	
+
+	public void setDataSource(DataSource dataSource) {
+		System.out.println("### GuestDaoImpl : setDataSource("+dataSource+") 메쏘드호출 ");
+		this.dataSource = dataSource;
+	}
+
 
 	@Override
 	public int insertGuest(Guest guest) throws Exception {

@@ -5,18 +5,31 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.Controller;
+
 import com.itwill.guest.Guest;
-import com.itwill.guest.GuestServiceImpl;
-import com.itwill.guest.UserService;
-import com.itwill.summer.Controller;
+import com.itwill.guest.GuestService;
+
 
 public class GuestListController implements Controller{
-	public String handleRequest(HttpServletRequest request,
+	private GuestService guestService;
+	public GuestListController() {
+		System.out.println("### GuestListController: 기본생성자호출");
+	}
+	
+	public void setGuestService(GuestService guestService) {
+		this.guestService = guestService;
+		System.out.println("### GuestListController : setGuestService("+guestService+") 메쏘드호출");
+	}
+
+	public ModelAndView handleRequest(HttpServletRequest request,
 								HttpServletResponse response) {
 		/********************guest_list.do***********************/
+		ModelAndView mv=new ModelAndView();
 		String forwardPath="";
 		try {
-			UserService guestService=new GuestServiceImpl();
+			
 			ArrayList<Guest> guestList=guestService.selectAll();
 			request.setAttribute("guestList", guestList);
 			forwardPath="forward:/WEB-INF/views/guest_list.jsp";
@@ -24,7 +37,7 @@ public class GuestListController implements Controller{
 			e.printStackTrace();
 			forwardPath="forward:/WEB-INF/views/guest_error.jsp";
 		}
-		
-		return forwardPath;
+		mv.setViewName(forwardPath);
+		return mv;
 	}
 }
