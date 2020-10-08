@@ -20,11 +20,16 @@ public class GuestController {
 	@Autowired
 	private GuestService guestService;
 
-	@RequestMapping("guest_modify_action.do")
+	@RequestMapping(value="guest_modify_action.do",method=RequestMethod.GET)
+	public String guest_modify_action_get()  {
+		return "redirect:guest_modify_form.do";
+	}
+	
+	@RequestMapping(value="guest_modify_action.do",method = RequestMethod.POST)
 	public String guest_modify_action_post(@ModelAttribute Guest guest) throws Exception {
 		String forwardPath = "";
-		guestService.updateGuest(guest);
-		forwardPath = "redirect:guest_list.do";
+		int updateRowCount = guestService.updateGuest(guest);
+		forwardPath = "redirect:guest_view.do";
 		return forwardPath;
 	}
 
