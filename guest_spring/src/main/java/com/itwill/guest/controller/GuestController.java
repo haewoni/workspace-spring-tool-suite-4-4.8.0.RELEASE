@@ -29,13 +29,17 @@ public class GuestController {
 	public String guest_modify_action_post(@ModelAttribute Guest guest) throws Exception {
 		String forwardPath = "";
 		int updateRowCount = guestService.updateGuest(guest);
-		forwardPath = "redirect:guest_view.do";
+		forwardPath = "guest_view";
 		return forwardPath;
 	}
 
 	@RequestMapping("guest_modify_form.do")
-	public String guest_modify_form() {
-		return "guest_modify_form";
+	public String guest_modify_form(Model model,@RequestParam String guest_no) throws Exception {
+		String forwardPath = "";
+		Guest guest = guestService.selectByNo(Integer.parseInt(guest_no));
+		model.addAttribute("guest", guest);
+		forwardPath = "guest_modify_form";
+		return forwardPath;
 	}
 
 	@RequestMapping(value = "/guest_write_action.do", method = RequestMethod.GET)
