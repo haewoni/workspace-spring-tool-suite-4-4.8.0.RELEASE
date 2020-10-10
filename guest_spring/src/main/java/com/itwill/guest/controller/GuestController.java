@@ -26,10 +26,11 @@ public class GuestController {
 	}
 	
 	@RequestMapping(value="guest_modify_action.do",method = RequestMethod.POST)
-	public String guest_modify_action_post(@ModelAttribute Guest guest) throws Exception {
+	public String guest_modify_action_post(@ModelAttribute Guest guest,@RequestParam String guest_no) throws Exception {
 		String forwardPath = "";
 		int updateRowCount = guestService.updateGuest(guest);
-		forwardPath = "guest_view";
+//		forwardPath = "redirect:guest_view.do?guest_no="+guest_no;
+		forwardPath = 
 		return forwardPath;
 	}
 
