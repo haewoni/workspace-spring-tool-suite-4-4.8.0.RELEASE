@@ -89,7 +89,7 @@
 					<tr>
 						<td align=center>
 						<input type="button" value="수정" onClick="guestModifyForm();"> &nbsp; 
-						<input type="button" value="삭제" onClick="guestRemoveAction();"> &nbsp; 
+						<input type="button" value="삭제" onClick="guestDeleteAction();"> &nbsp; 
 						<input type="button" value="목록" onClick="guestList()"></td>
 					</tr>
 				</table>

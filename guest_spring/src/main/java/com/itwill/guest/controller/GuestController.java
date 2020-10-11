@@ -19,7 +19,13 @@ import com.itwill.guest.GuestService;
 public class GuestController {
 	@Autowired
 	private GuestService guestService;
-
+	
+	@RequestMapping(value="guest_delete_action.do",method = RequestMethod.POST)
+	public String guest_delete_action_post(@RequestParam int guest_no) throws Exception {
+		int deleteRowCount = guestService.deleteGuest(guest_no);
+		return "guest_list";
+	}
+	
 	@RequestMapping(value="guest_modify_action.do",method=RequestMethod.GET)
 	public String guest_modify_action_get()  {
 		return "redirect:guest_modify_form.do";
@@ -30,7 +36,7 @@ public class GuestController {
 		String forwardPath = "";
 		int updateRowCount = guestService.updateGuest(guest);
 //		forwardPath = "redirect:guest_view.do?guest_no="+guest_no;
-		forwardPath = 
+		forwardPath = "guest_view";
 		return forwardPath;
 	}
 

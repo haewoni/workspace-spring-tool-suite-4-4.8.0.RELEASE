@@ -18,9 +18,9 @@ function guestModifyForm() {
 	document.f.method='POST';
 	document.f.submit();
 }
-function guestRemoveAction() {
+function guestDeleteAction() {
 	if (window.confirm("정말 삭제하시겠습니까?")) {
-		document.f.action = "guest_remove_action.do";
+		document.f.action = "guest_delete_action.do";
 		document.f.method='POST';
 		document.f.submit();
 	}
