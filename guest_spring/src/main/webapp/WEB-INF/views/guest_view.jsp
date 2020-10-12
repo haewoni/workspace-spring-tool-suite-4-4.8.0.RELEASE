@@ -35,7 +35,15 @@
 		<!-- wrapper content start -->
 		<div id="wrapper">
 			
-
+<script type="text/javascript">
+function guestDeleteAction() {
+	if (window.confirm("정말 삭제하시겠습니까?")) {
+		document.f.action = "guest_delete_action.do";
+		document.f.method='POST';
+		document.f.submit();
+	}
+}
+</script>
 
 
 <div id="content">

@@ -20,7 +20,8 @@
 				<url>http://maven.jahia.org/maven2/</url>
 			</repository>
 		</repositories>
-##################### apache datasource ####################		
+		********************************아파치 데이터소스 사용시 스프링 데이터소스도 함께 설정해주어야함
+##################### apache datasource ####################	 	
 		<!-- apache datasource(dbcp2) -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>

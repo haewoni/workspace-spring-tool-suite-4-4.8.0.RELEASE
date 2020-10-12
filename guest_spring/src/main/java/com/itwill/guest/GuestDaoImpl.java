@@ -30,6 +30,7 @@ public class GuestDaoImpl implements GuestDao {
 		pstmt.setString(4, guest.getGuest_title());
 		pstmt.setString(5, guest.getGuest_content());
 		int insertRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
 		return insertRowCount;
 	}
@@ -47,6 +48,9 @@ public class GuestDaoImpl implements GuestDao {
 					rs.getString("guest_content"));
 
 		}
+		rs.close();
+		pstmt.close();
+		con.close();
 		return guest;
 	}
 
@@ -68,6 +72,9 @@ public class GuestDaoImpl implements GuestDao {
 					rs.getString("guest_email"), rs.getString("guest_homepage"), rs.getString("guest_title"),
 					rs.getString("guest_content")));
 		}
+		rs.close();
+		pstmt.close();
+		con.close();
 		return guestList;
 	}
 
@@ -82,6 +89,7 @@ public class GuestDaoImpl implements GuestDao {
 		pstmt.setString(5, guest.getGuest_content());
 		pstmt.setInt(6, guest.getGuest_no());
 		int updateRowCount = pstmt.executeUpdate();
+		pstmt.close();
 		con.close();
 		return updateRowCount;
 	}
@@ -92,6 +100,8 @@ public class GuestDaoImpl implements GuestDao {
 		PreparedStatement pstmt = con.prepareStatement(GuestSQL.GUEST_DELETE);
 		pstmt.setInt(1, no);
 		int deleteRowCount = pstmt.executeUpdate();
+		pstmt.close();
+		con.close();
 		return deleteRowCount;
 	}
 }

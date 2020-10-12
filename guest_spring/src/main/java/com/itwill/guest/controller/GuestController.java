@@ -21,9 +21,9 @@ public class GuestController {
 	private GuestService guestService;
 	
 	@RequestMapping(value="guest_delete_action.do",method = RequestMethod.POST)
-	public String guest_delete_action_post(@RequestParam int guest_no) throws Exception {
-		int deleteRowCount = guestService.deleteGuest(guest_no);
-		return "guest_list";
+	public String guest_delete_action_post(@RequestParam String guest_no) throws Exception {
+		int deleteRowCount = guestService.deleteGuest(Integer.parseInt(guest_no));
+		return "redirect:guest_list.do";
 	}
 	
 	@RequestMapping(value="guest_modify_action.do",method=RequestMethod.GET)
