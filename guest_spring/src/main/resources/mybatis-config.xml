@@ -29,7 +29,7 @@
 		<!-- 
 		<mapper resource="com/itwill/guest/mapper/GuestMapper.xml"/>
 		 -->
-		<mapper class="com.itwill.guest.mapper.GuestMapper.xml"/>
+		<mapper class="com.itwill.guest.mapper.GuestMapper"/>
 	</mappers>
 </configuration>
 

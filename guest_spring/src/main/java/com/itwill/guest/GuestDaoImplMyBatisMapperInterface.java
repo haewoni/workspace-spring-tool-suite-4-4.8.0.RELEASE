@@ -16,12 +16,10 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.guest.mapper.GuestMapper;
 
-public class GuestDaoImplMyBatis implements GuestDao, GuestMapper {
+public class GuestDaoImplMyBatisMapperInterface implements GuestDao, GuestMapper {
 	private SqlSessionFactory sqlSessionFactory;
-	public final static String NAMESPACE=
-			"com.itwill.guest.mapper.GuestMapper.";
 	
-	public GuestDaoImplMyBatis() throws Exception {
+	public GuestDaoImplMyBatisMapperInterface() throws Exception {
 		/*
 		 * 모든 마이바티스 애플리케이션은 SqlSessionFactory 인스턴스를 사용한다. 
 		 * SqlSessionFactory인스턴스는 SqlSessionFactoryBuilder를 사용하여 만들수 있다. 
@@ -45,9 +43,8 @@ public class GuestDaoImplMyBatis implements GuestDao, GuestMapper {
 	@Override
 	public int insertGuest(Guest guest) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession(true);
-		int insertRowCount = sqlSession.insert(NAMESPACE+"insertGuest",guest);
-		sqlSession.commit(); ///create,update 같이 변경 사항이 있는 경우 commit 해주기
-		sqlSession.close();
+		GuestMapper guestMapper = sqlSession.getMapper(GuestMapper.class);
+		int insertRowCount = guestMapper.insertGuest(guest);
 		return insertRowCount;
 	}
 	/*
