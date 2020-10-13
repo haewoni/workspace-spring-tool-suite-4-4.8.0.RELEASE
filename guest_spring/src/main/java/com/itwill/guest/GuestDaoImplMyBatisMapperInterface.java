@@ -35,7 +35,7 @@ public class GuestDaoImplMyBatisMapperInterface implements GuestDao, GuestMapper
 		this.sqlSessionFactory= 
 				new SqlSessionFactoryBuilder().build(in);
 	}
-	
+	 
 
 	/*
 	 * CREATE
