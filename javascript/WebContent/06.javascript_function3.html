@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	/*
+		1. function객체를 변수에대입(일급함수)
+		2. function객체를 파라메타데이타로사용
+		3. function객체를 반환
+		
+		자바스크립트 내부함수
+	*/
+	function outer_function1(){
+		var outer_var="outer var";
+		function inner_function1(){
+			var inner_var="inner date";
+		}
+	}
+	
+</script>
+</head>
+<body>
+<h1>javascript inner function,closure(클로져)</h1>
+<script type="text/javascript">
+	outer_function1();
+	/*
+	console.log(outer_var)
+	inner_function1();
+	console.log(innerr_var)
+	*/
+</script>
+
+</body>
+</html>
