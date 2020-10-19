@@ -16,7 +16,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.itwill.guest.mapper.GuestMapper;
 
-public class GuestDaoImplMyBatis implements GuestDao, GuestMapper {
+public class GuestDaoImplMyBatis implements GuestDao {
 	private SqlSessionFactory sqlSessionFactory;
 	public final static String NAMESPACE=
 			"com.itwill.guest.mapper.GuestMapper.";

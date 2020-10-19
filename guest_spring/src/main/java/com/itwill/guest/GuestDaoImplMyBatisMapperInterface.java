@@ -4,15 +4,21 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.itwill.guest.mapper.GuestMapper;
-
-public class GuestDaoImplMyBatisMapperInterface implements GuestDao {
+public class GuestDaoImplMyBatisMapperInterface implements GuestDao,GuestMapper {
 	private SqlSessionFactory sqlSessionFactory;
 	
+
+	
+
+
 	public GuestDaoImplMyBatisMapperInterface() throws Exception {
 		/*
 		 * 모든 마이바티스 애플리케이션은 SqlSessionFactory 인스턴스를 사용한다. 

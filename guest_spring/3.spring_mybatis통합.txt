@@ -24,9 +24,9 @@
 	
 3. org.mybatis.spring.SqlSessionFactoryBean	을 
    application-config.xml에 등록 
-	###############applicationContext.xml############
+###############applicationContext.xml############
 	<bean  id="sqlSessionFactory" 
-			class="org.mybatis.spring.SqlSessionFactoryBean">
+			class="org.mybatis.	spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="apacheDataSource"/>
 		<property name="configLocation" 
 		          value="classpath:mybatis-config.xml"/>
