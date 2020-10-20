@@ -22,37 +22,51 @@
 	background-color: gray;
 }
 .evenClass{
-	background-color: olive;
+	background-color: pink;
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-	
 	$(function(){
 		/*
 		1.tag selector
 		*/
-	
+		$('h2').addClass('highlight1');
+		$('h2').css('color','blue');
 		/*
 		2. filter selector(pseudo class)
 		*/
-		
+		$('div:odd').addClass('oddClass');
+		$('div:even').addClass('evenClass');
 		/*
 		3.DOM순회(id selector)
 		*/
-		
-		
+		$('#root').children().each(function(i,e){
+			console.log(i+'-->'+e+":"+e.firstChild.nodeValue);
+		});
 		/*
 		4.DOM Node변경
 		*/
-		
+		$('#h31').text('<u>변경 .text()</u>');
+		$('#h32').html('<u>변경 .html()</u>');
 		/*
-		5. 이벤트(effect)
+		5. 이벤트(event)
 		*/
-		
-		
+		$('#send').click(function(e) {
+			console.log("이벤트객체:"+e)
+			console.log("이벤트타겟:"+e.target);
+			console.log("이벤트타겟:"+e.target.firstChild.nodeValue);
+			
+			//6.이펙트(effect)
+			//$('p').slideToggle();
+			//$('div').slideToggle();
+			$('h2').slideToggle();
+			
+		});
 	});
+	
 </script>
+
 </head>
 <body style="font-size: 15pt">
 	<h2>1. jQuery("선택자") 메소드를 이용하여 HTML DOM의 노드(엘리먼트) 선택하여 조작하기.</h2>
@@ -81,7 +95,15 @@
 		
 
 	<script type="text/javascript">
-	
+		
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+
+

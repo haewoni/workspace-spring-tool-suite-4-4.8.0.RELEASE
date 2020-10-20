@@ -15,13 +15,26 @@
 				{'id':'guard4','name':'kim4','address':'경기파'},
 				{'id':'guard5','name':'kim5','address':'경기솔'}
 		];
+		$('h2').append("&nbsp;"+memberNameArray.length+'명');
+		$('p').html(memberNameArray.join(','));	
+		/*
+		for(var i=0;i<memberNameArray.length;i++){
+			$('#memberNameList').append('<li>'+memberNameArray[i]+'</li>');
+		}
+		*/
+		$.each(memberNameArray,function(i,e){
+			$('#memberNameList').append('<li>'+i+'번째 요소 '+e+'</li>');
+		});
+		$.each(memberArray, function(i, member) {
+			$('#memberList').append('<li>['+member.id+"]"+member.name+'</li>');
+		});
 		
 	});
 	
 </script>
 </head>
 <body style="padding: 10px;">
-	<h2>Members of my Group are</h2>
+	<h2>Members of my Group are </h2>
 	<p></p>
 	<ol id="memberNameList"></ol>
 	<ol id="memberList"></ol>

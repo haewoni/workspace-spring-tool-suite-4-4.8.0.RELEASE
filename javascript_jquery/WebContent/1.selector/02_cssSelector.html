@@ -6,6 +6,13 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		$('#title').html($('h2').text());
+		$('.contents').html('<i>jQuery는 오픈소스 자바스크립트라이브러리입니다.</i>');
+		//$('.contents').text('<i>jQuery는 오픈소스 자바스크립트라이브러리입니다.</i>');
+		console.log('------------.text()-----------------');
+		console.log($('body').text());
+		console.log('-------------.html()----------------');
+		console.log($('body').html());
 		
 	});
 </script>

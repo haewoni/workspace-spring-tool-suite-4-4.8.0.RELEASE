@@ -2,7 +2,7 @@ window.jQuery=function(selector){
 	if(typeof selector=='string'){
 		
 	}else if(typeof selector=='function'){
-		
+		window.addEventListener('load',selector);
 	}else if(typeof selector=='object'){
 	
 	}
@@ -18,13 +18,15 @@ window.jQuery=function(selector){
 		},
 		'text':function(textArg){
 			if(textArg){
-				this.elementNode.firstChild.nodeValue=textArg;
+			   for(var i=0;i<elementNodeList.length;i++){
+			       elementNodeList.item(i).firstChild.nodeValue=textArg;
+			   }		
+			
 			}else{
 				return this.elementNode.firstChild.nodeValue;
 			}
 		}
-		
-	}; 
+	};
 	return jQueryWrapperObject;
 };
 window.$=window.jQuery;
