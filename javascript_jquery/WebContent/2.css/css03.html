@@ -30,7 +30,13 @@ td {
 <script type="text/javascript">
 $(function(){
 
-	
+	$('td').click(function(e){
+		console.log("e.target:"+e.target.firstChild.nodeValue);
+		console.log("$(e.target):"+$(e.target).text() );
+		console.log("this:"+this.firstChild.nodeValue);
+		console.log("$(this):"+$(this).text() );
+		$(e.target).toggleClass('selected');
+	});
 	
 });
 </script>

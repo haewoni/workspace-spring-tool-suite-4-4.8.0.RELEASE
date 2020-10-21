@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>jQuery에서 제공하는 Event 핸들링 메소드</title>
 <style>
-div,pre {
+div, pre {
 	background: #FFFF00;
 	padding: 10px;
 	margin: 10px;
@@ -28,20 +28,41 @@ td {
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
-var enterCount = 0;
-var leaveCount = 0;
-var clickCount = 0;
-$(function() {
-	
-	
-});
+	var enterCount = 0;
+	var leaveCount = 0;
+	var clickCount = 0;
+	$(function() {
+		/*
+		$('h2').click(function(e){
+			$(e.target).html('jQuery에서 제공하는 Event핸들링메쏘드['+ ++clickCount+']')
+		});
+		 */
+		$('h2').on('click', function(e) {
+			$(e.target).html('jQuery에서 제공하는 Event핸들링메쏘드[' + ++clickCount + ']')
+		});
+		$('#mouseArea').on('mouseenter mouseleave click', function(e) {
+			if (e.type == 'mouseenter') {
+				enterCount++;
+			} else if (e.type == 'mouseleave') {
+				leaveCount++;
+			} else if (e.type == 'click') {
+				clickCount++;
+			}
+			$('#spResult').text(
+							'mouse enter count:' + enterCount+"<br>"+
+							'mouse leave count:' + leaveCount+"<br>"+
+							 'mouse click count:' + clickCount+"<br>");
+			
+		});
+
+	});
 </script>
 
 </head>
 <body style="padding: 10px;">
 	<h2>jQuery에서 제공하는 Event 핸들링 메소드</h2>
 	<div id="mouseArea">
-		AREA(DIV) MOUSE : <span id="spResult"></span>
+		AREA(DIV) MOUSE :<br> <span id="spResult"></span>
 	</div>
 </body>
 </html>

@@ -28,10 +28,13 @@
 <script type="text/javascript">
 	$(function(){
 		$('h1').each(function(i,element){
-			conole.log(i+"-->"+element);
-			element.setAttribute('class','high_light_'+i);
+			console.log(i+"-->"+element);
+			//element.setAttribute('class','high_light_'+i);
+			$(element).addClass('high_light_'+i);
+			
 		});
-		$('h1').addClass('high_light_3');
+		
+		//$('h1').addClass('high_light_3');
 	});
 </script>
 </head>

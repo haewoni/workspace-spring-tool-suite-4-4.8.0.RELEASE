@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>jQuery에서 제공하는 기본 필터를 이용한 HTML Element 검색</title>
@@ -23,13 +23,14 @@ td.notSelect{
 	border:0.5px dashed blue;
 }
 td:not(.notSelect){
-	background:pink;
+	background: pink;
 }
+
 </style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-		$('tr>td.notSelect').css('border','0.5px double red');
+		$('tr>td.notSelect').css('border','1px double red');
 		$('tr>td:not(.notSelect)').css('background','gold');
 	});
 </script>

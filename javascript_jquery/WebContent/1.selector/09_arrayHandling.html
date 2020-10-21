@@ -46,27 +46,33 @@
 			}else{
 				return 1;
 			}
-		});
+		}); 
 		memberArray.sort(function(m1, m2) {
 			if(m1.name > m2.name){
+				//name ascending
 				return 1;
 			}else if(m1.name==m2.name){
-				if(m1.address>m2.address){
+				if(m1.address >= m2.address){
+					//address ascending
 					return 1;
+				}else{
+					return -1;
+				}
 			}else{
 				return -1;
-				}
 			}
 		});
 		
 		
 		
-		
 		$('.sorted1').html(memberNameArray.join(','));
 		$('.sorted2').html(memberScoreArray.join(','));
+		
 		$.each(memberArray,function(i,m){
 			$('.sorted3').append(m.id+","+m.name+","+m.address+"<br>");
 		});
+		
+		
 	});
 	
 	
