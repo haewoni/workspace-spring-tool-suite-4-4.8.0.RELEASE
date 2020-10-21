@@ -24,11 +24,22 @@ td {
 <script type="text/javascript">
 	$(function() {
 		$('#f').on('submit',function(e){
-			//alert('submit');
+			alert('submit');
 			/*
-			ajax요청
+			폼을 이용한 서버로의 jquery ajax 요청
+			서버로의 ajax요청
 			1.parameter생성
+			2.ajax 요청
+			3.submit default 중지
 			*/
+			var parameter=$('#f').serialize();
+			var parameterArray=$('#f').serializeArray();
+			var parameterArraytoString=$('#f').serializeArray();
+			console.log("1.paarameter $('form').serialize():"+parameter);
+			console.log("2.paarameter $('form').serialize():"+parameterArray);
+			console.log("3.paarameter $('form').serializeArray():"+parameterArraytoString);
+			e.preventDefault();
+			
 			
 		});
 		
