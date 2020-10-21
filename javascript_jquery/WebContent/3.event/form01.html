@@ -26,21 +26,20 @@ td {
 		$('#f').on('submit',function(e){
 			alert('submit');
 			/*
-			폼을 이용한 서버로의 jquery ajax 요청
-			서버로의 ajax요청
+			폼을이용한 서버로의 jquery ajax요청
 			1.parameter생성
-			2.ajax 요청
-			3.submit default 중지
+			2.jquery ajax요청
+			3.submit default중지
 			*/
-			var parameter=$('#f').serialize();
-			var parameterArray=$('#f').serializeArray();
-			var parameterArraytoString=$('#f').serializeArray();
-			console.log("1.paarameter $('form').serialize():"+parameter);
-			console.log("2.paarameter $('form').serialize():"+parameterArray);
-			console.log("3.paarameter $('form').serializeArray():"+parameterArraytoString);
+			var paramter=$('#f').serialize();
+			var paramterArray=$('#f').serializeArray();
+			var paramterArraytoString=$.param(paramterArray);
+			console.log("1.parameter $('form').serialize():"+paramter);
+			console.log("2.parameter $('form').serializeArray():"+paramterArray);
+			console.log("3.parameter $.param(paramterArray):"+paramterArraytoString);
+			
+			
 			e.preventDefault();
-			
-			
 		});
 		
 	});
@@ -50,7 +49,7 @@ td {
 <body style="padding: 10px;">
 	<h2>jQuery에서 제공하는 Form 제어 메소드</h2>
 	<div>
-		<form id="f" action="xxx.jsp">
+		<form id="f" action="xxx.jsp" method='post'>
 			아이디:<input type="text" name="id" id="id" /><br />
 			이이름:<input type="text" name="name" /><br /> 
 			별명[히든]:<input type="hidden" name="alias" value="제임스" /><br />

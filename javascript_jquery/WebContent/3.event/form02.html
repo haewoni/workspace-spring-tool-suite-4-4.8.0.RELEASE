@@ -56,19 +56,16 @@ td {
 			var nameValue=$('#name').val();
 			var aliasValue=$('#alias').val();
 			var jobValue=$('#job option:selected').val();
-			console.log('----------------input element read  .val()----------------------')
+			console.log('------------input element read  .val()-----------------')
 			console.log(idValue);
 			console.log(nameValue);
 			console.log(aliasValue);
 			console.log(jobValue);
 			//set
-			console.log('----------------input element write  .val(data)----------------------')
-			$('#alias').val('제임스딘');
+			console.log('--------------input element write  .val(data)--------------')
+			$('#alias').val('제임스딘~~~~~~~~');
 			$('#job option:eq(2)').attr('selected','selected');
-			
-			$('#job').val("회사원").attr('selected','selected');
-			
-		  
+			$("#job").val("회사원").attr("selected", "selected");
 		     
 		 e.preventDefault();
 		});
@@ -82,7 +79,7 @@ td {
 	
 	<div>
 		<form id="f" name="f" action="xxx.jsp">
-			아이디:<input type="text" name="id" id="id"  value="xxx"/>
+			아이디:<input type="text" name="id" id="id" />
 			<img id="p_image"  alt="프로필이미지" />
 			<br />
 			이이름:<input type="text"  id="name" name="name" /><br /> 
@@ -129,7 +126,7 @@ td {
 			$("#셀렉트ID option:eq(1)").attr("selected", "selected");
 			
 			// text 값으로 selected 속성 주기
-			$("#셀렉트ID")val("1번").attr("selected", "selected");
+			$("#셀렉트ID").val("1번").attr("selected", "selected");
 			or
 			$("#id").text("1번").attr("selected", "selected");
 			
