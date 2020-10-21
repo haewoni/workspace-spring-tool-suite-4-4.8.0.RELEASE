@@ -23,7 +23,16 @@ td {
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-	
+		$('td').css('border','1px dotted red');  //cascading 되지 않음
+		$('td:first').css('color','white');  //cascading 되지 않음
+		$('td:first-child').css('background','pink');  //cascading 되지 않음
+		$('td:last').css('color','green');  //cascading 되지 않음
+		$('td:last-child').css('background','aqua');  //cascading 되지 않음
+		
+		$('td:nth-child(2)').css('background','orange');
+		$('td:nth-child(3)').css('background','yellow');
+		$('td:nth-child(4)').css('background','olive');
+		
 		
 	});
 </script>

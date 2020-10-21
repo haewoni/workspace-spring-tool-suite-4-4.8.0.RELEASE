@@ -8,26 +8,28 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	<context:annotation-config/>
 	<mvc:annotation-driven/>
-	<context:component-scan base-package="com.itwill.controller.annotation"></context:component-scan>
+	<context:component-scan base-package="com.itwill.controller.annotation"/>
 	<!-- 
 	MVC객체 설정
 		1.Controller객체설정 
 		2.View(JSP)객체설정 
 	-->
 	
-	<!-- Controller 각체를 Spring Web(Child) Container에 등록 -->
-	<bean id="helloController" class="com.itwill.controller.HelloController"/>
+	<!-- Controller객체를 Spring Web(Child) Container에등록 -->
+	<bean id="helloController" scope="singleton" class="com.itwill.controller.HelloController"/>
 	
 	<!-- 
-	Controller 객체를 Mapping 해줄 객체 설정
+	Controller객체를 Mapping해줄객체설정
 	 -->
-	 <bean id="handlerMapping" 
-	 	   class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-	 	   <property name="mappings">
-	 	   	<props>
-	 	   		<prop key="/hello.do">helloController</prop>
-	 	   	</props>
-	 	   </property>
-	 	   </bean>
+	<bean id="handlerMapping" 
+		 class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/hello.do">helloController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
 	
 </beans>

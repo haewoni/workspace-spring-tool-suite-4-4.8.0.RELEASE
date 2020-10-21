@@ -21,12 +21,12 @@
 			if(name.startsWith('k')){
 				return true;
 			}else{
-			return false;
+				return false;
 			}
-		}, false);
+		}, true);
 		
 		$('.selected1').append(filterNameArray.join(','));
-		var filterMemberArray = $.grep(memberArray,function(m,i){
+		var filterMemberArray=$.grep(memberArray, function(m, i) {
 			if(m.address=='경기도'){
 				return true;
 			}else{
@@ -34,10 +34,9 @@
 			}
 		},false);
 		
-		$.each(filterMemberArray,function(i,m) {
-			$('')
-		});                                                          '' 
-		
+		$.each(filterMemberArray, function(i, m) {
+			$('.selected2').append(m.id+","+m.name+","+m.address+"<br>");
+		});
 		
 		
 		

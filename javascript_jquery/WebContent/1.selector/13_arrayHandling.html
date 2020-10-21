@@ -27,7 +27,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript">
 	$(function(){
-	
+		$('h1').each(function(i,element){
+			conole.log(i+"-->"+element);
+			element.setAttribute('class','high_light_'+i);
+		});
+		$('h1').addClass('high_light_3');
 	});
 </script>
 </head>

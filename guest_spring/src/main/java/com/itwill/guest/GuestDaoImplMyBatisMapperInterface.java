@@ -1,6 +1,7 @@
 package com.itwill.guest;
 
 import java.io.InputStream;
+
 import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
@@ -9,14 +10,19 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.itwill.guest.mapper.GuestMapper;
+@Component
 public class GuestDaoImplMyBatisMapperInterface implements GuestDao,GuestMapper {
 	private SqlSessionFactory sqlSessionFactory;
-	
+	@Autowired
+	private GuestDao guestDao;
 
-	
+	public GuestDaoImplMyBatisMapperInterface(GuestDao guestDao) {
+		this.guestDao = guestDao;
+	}
 
 
 	public GuestDaoImplMyBatisMapperInterface() throws Exception {
