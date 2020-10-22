@@ -17,7 +17,7 @@
 	}
 	GuestService guestService=new GuestService();
 	Guest guest=
-	guestService.selectByNo(Integer.parseInt(guest_noStr));
+			guestService.selectByNo(Integer.parseInt(guest_noStr));
 	
 	if(guest==null){
 		out.println("<script>");
@@ -26,6 +26,10 @@
 		out.println("</script>");
 		return;
 	}
+	
+	
+	
+	
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

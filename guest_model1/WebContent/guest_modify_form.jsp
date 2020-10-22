@@ -15,7 +15,9 @@
 	String guest_noStr = request.getParameter("guest_no");
 	GuestService guestService=new GuestService();
 	Guest guest=
-	guestService.selectByNo(Integer.parseInt(guest_noStr));
+			guestService.selectByNo(Integer.parseInt(guest_noStr));
+	
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+	
+	
 	/*
 	1.파라메타바끼
 	2.GuestService.updateGuest()메쏘드호출
@@ -23,15 +25,16 @@
 		String guest_content=request.getParameter("guest_content");
 		GuestService guestService=new GuestService();
 		int updateRowCount=
-		guestService.updateGuest(
-			new Guest(Integer.parseInt(guest_noStr),
-				guest_name,null,
-				guest_email,guest_homepage,
-				guest_title,guest_content));
+				guestService.updateGuest(
+							new Guest(Integer.parseInt(guest_noStr),
+								guest_name,null,
+								guest_email,guest_homepage,
+								guest_title,guest_content));
 		response.sendRedirect("guest_view.jsp?guest_no="+guest_noStr);
 	}catch(Exception e){
 		e.printStackTrace();
 		response.sendRedirect("guest_error.jsp");
 	}
+	
 %>
 
