@@ -1,5 +1,7 @@
 package com.itwill.controller.annotation;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,6 +85,35 @@ public class ResponseController {
 		 */
 		return redirectView;
 	}
+	
+	/*******************xml출력 View[XMLView]***********************/
+	@RequestMapping("response_xml_view_object.do")
+	public View response_xml_view_object(Model model) {
+		ArrayList<String> friendsList=new ArrayList<String>();
+		friendsList.add("김수미");
+		friendsList.add("김우미");
+		friendsList.add("김미미");
+		friendsList.add("김양미");
+		friendsList.add("김가미");
+		model.addAttribute("friendList",friendsList);
+		XMLView xmlView=new XMLView();
+		return xmlView;
+	}
+	@RequestMapping("response_xml_view_name.do")
+	public String response_xml_view_name(Model model) {
+		ArrayList<String> friendsList=new ArrayList<String>();
+		friendsList.add("김수미");
+		friendsList.add("김우미");
+		friendsList.add("김미미");
+		friendsList.add("김양미");
+		friendsList.add("김가미");
+		model.addAttribute("friendList",friendsList);
+		
+		return "xmlView";
+	}
+	
+	
+	
 }
 
 

@@ -34,7 +34,13 @@
 			</props>
 		</property>
 	</bean>
-	<!-- view resolver -->
+	<!-- View등록 -->
+	<bean id="xmlView" class="com.itwill.controller.annotation.XMLView"/>
+		<!-- view resolver1 -->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"/>
+		</bean>
+	<!-- view resolver2 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/"/>
 		<property name="suffix" value=".jsp"/>
