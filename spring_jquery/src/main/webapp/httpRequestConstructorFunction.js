@@ -1,6 +1,8 @@
-
+/*
+생성자함수
+*/
 function AjaxRequest(url,params,callback,method){
-	this.xhr=null;
+	this.xhr=this.getXMLHttpRequest();
 	this.url=url;
 	this.params=params;
 	this.callback=callback;
@@ -16,7 +18,7 @@ AjaxRequest.prototype={
 			}
 		},
 		'sendRequest':function(){
-			this.xhr = this.getXMLHttpRequest();
+			//this.xhr = this.getXMLHttpRequest();
 			var httpMethod = this.method ? this.method : 'GET';
 			if (httpMethod != 'GET' && httpMethod != 'POST') {
 				httpMethod = 'GET';
@@ -26,18 +28,13 @@ AjaxRequest.prototype={
 			if (httpMethod == 'GET' && httpParams != null) {
 				httpUrl = httpUrl + "?" + httpParams;
 			}
+			//this.xhr.onreadystatechange=this.callback;
 			var ajaxRequest=this;
 			this.xhr.onreadystatechange=function(){
-				ajaxRequest.callback(this,"어렵네여!!");
+				ajaxRequest.callback(this);
 			};
-			/*
-			this.xhr.onreadystatechange=function(){
-				if(this.readyState==4){
-					var jsonObject = JSON.parse(this.responseText);
-				}
-				ajaxRequest.callback(jsonObject);
-			};
-			*/
+			
+			
 			this.xhr.open(httpMethod, httpUrl, true);
 			this.xhr.setRequestHeader(
 				'Content-Type', 'application/x-www-form-urlencoded');

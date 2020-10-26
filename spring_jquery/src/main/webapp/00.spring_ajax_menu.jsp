@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Spring XML,JSON,TEXT 응답</h1><hr>
+<h1>Spring MessageConverter를 사용한 XML,JSON,TEXT 응답</h1><hr>
 <ol>
 	<li><a href='response_string1'>String response1[MessageConverter]</a></li>
 	<li><a href='response_string2'>String response2[MessageConverter]</a></li>

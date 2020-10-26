@@ -2,9 +2,13 @@ package com.itwill.ajax;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-//@XmlRootElement(name = "news")
-public class News {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
+@XmlRootElement(name = "news")//JAXB
+@JacksonXmlRootElement(localName ="news")//Jackson
+public class News {
+	@JsonProperty(value = "newsTitle")
 	private String title;
 	private String company;
 	private String date;
@@ -12,16 +16,13 @@ public class News {
 	public News() {
 		// TODO Auto-generated constructor stub
 	}
-
 	public News(String title, String company, String date) {
 		super();
 		this.title = title;
 		this.company = company;
 		this.date = date;
 	}
-
-	//@XmlElement(name = "newsTitle")
-	//@JsonProperty(value = "newsTitle")
+	
 	public String getTitle() {
 		return title;
 	}

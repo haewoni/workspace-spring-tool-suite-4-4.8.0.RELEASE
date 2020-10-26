@@ -25,13 +25,13 @@
 	3.id selector
 	*/
 	#content{
-		display: block;
-		border: 1px solid black;
-		background-color: silver;
-		width: 800px;
-		margin-left: auto;
-		margin-right: auto;
-		padding:  20px 20px 20px 20px;
+		border: 1px solid black; 
+		width: 80%;
+		margin-top:50px; 
+		margin-right:auto; 
+		margin-left:auto; 
+		margin-bottom:50px; 
+		padding: 20px;
 	}
 	#newsDiv{
 		padding-left: 10%;
@@ -44,7 +44,7 @@
 <!-- 
 <script type="text/javascript" src="httpRequest.js"></script>
  -->
-<script type="text/javascript" src="httpRequestConstructorFunction.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
 	function showNewsDiv() {
 		document.getElementById("newsDiv").style.display = 'block';
@@ -54,69 +54,56 @@
 	}
 	
 	function requestNews() {
-		//sendRequest('08.newsTitlesJSON.jsp', null, responseNews, 'GET');
-		var ajaxRequest=new AjaxRequest('08.newsTitlesJSON',
-						null, 
-						responseNews, 
-						'GET');
-		ajaxRequest.sendRequest();
-		
+		$.ajax({
+			url:'08.newsTitlesJSON',
+			method:'GET',
+			dataType:'json',
+			success:responseNews
+		});
+	
 	}
-	/*
-	function responseNewsData(data) {
-		console.log(data);
-	}
-	*/
-	function responseNews(xhr,msg) {
+	
+	function responseNews(jsonOject) {
 		
-		console.log("----->"+ xhr+","+msg);
-		if (xhr.readyState == 4) {
-			var jsonStr = xhr.responseText;
-			var jsonObject = JSON.parse(jsonStr);
 			/*
 			{
-			"count": 9,
-			"data": [
-						{
-							"newsTitle": "참으로 수고 많으셨습니다…",
-							"company": "연합뉴스",
-							"date": "2020. 3. 16 오후 12:14:43"
-						},
-						{
-							"newsTitle": "IS 60개국 테러 위협 영상 공개…한국도 포함 포토",
-							"company": "SBS뉴스",
-							"date": "2020. 3. 16 오후 12:14:43"
-						}
-					]
+				"count":9,
+				"data": [
+							{
+								"newsTitle":"참으로 수고 많으셨습니다…",
+								"company":"연합뉴스",
+								"date":"2020. 10. 16 오후 12:44:38"
+							},
+							{
+								"newsTitle":"IS 60개국 테러 위협 영상 공개…한국도 포함 포토",
+								"company":"SBS뉴스",
+								"date":"2020. 10. 16 오후 12:44:38"
+							}
+						]
 			}
 			*/
-			if(jsonObject.count == 0){
+			if(jsonOject.count==0){
 				return;
 			}
-			var newsJsonArray =  jsonObject.data;
+			var newsJsonArray = jsonOject.data;
 			var html="<ul>";
 			for (var i = 0; i < newsJsonArray.length; i++) {
+				/*{"newsTitle":"참으로 수고 많으셨습니다…",
+				"company":"연합뉴스",
+				"date":"2020. 10. 16 오후 12:44:38"}*/
 				var newsJsonObject = newsJsonArray[i];
-				/*
-				{
-							"newsTitle": "참으로 수고 많으셨습니다…",
-							"company": "연합뉴스",
-							"date": "2020. 3. 16 오후 12:14:43"
-				}
-				*/
-				var titleStr = newsJsonObject.newsTitle;
-				var companyStr = newsJsonObject.company;
-				var dateStr = newsJsonObject.date;
+				var titleStr=newsJsonObject.newsTitle;
+				var companyStr=newsJsonObject.company;
+				var dateStr=newsJsonObject.date;
 				html+="<li>"+titleStr+"["+companyStr+"("+dateStr+")]JSON</li>";
 			}
-			html += "</ul>";
-			document.getElementById('newsDiv').innerHTML=html;
-		}
+			html+="</ul>";
+			document.querySelector("#newsDiv").innerHTML=html;
 	}
-	window.onload = function() {
+	$(function() {
 		setInterval(requestNews, 2000);
 		//hideNewsDiv();
-	};
+	});
 </script>
 </head>
 <body>

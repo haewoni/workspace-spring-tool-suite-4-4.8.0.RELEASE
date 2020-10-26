@@ -13,7 +13,12 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.itwill.ajax.controller"/>
     <context:component-scan base-package="com.itwill.ajax"/>
+   
+    <mvc:default-servlet-handler/>
+   
+    <!-- 
     <mvc:resources mapping="/**" location="/" />
+     -->
     <!-- XMLView(Custom) -->
    
     
