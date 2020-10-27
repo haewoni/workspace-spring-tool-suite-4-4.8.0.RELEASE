@@ -6,16 +6,13 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-@XmlRootElement(name = "guestList")
-@JacksonXmlRootElement(localName = "guest_list")
+@XmlRootElement(name = "guest_list")
+//@JacksonXmlRootElement(localName = "guest_list")
 public class GuestResultList {
 	private List<Guest> guestList;
-	
+
 	@XmlElement(name="guest")
-	@JacksonXmlProperty(localName = "guest")
+	//@JacksonXmlProperty(localName = "guest")
 	public List<Guest> getGuestList() {
 		return guestList;
 	}
