@@ -19,6 +19,18 @@ import com.itwill.guest.GuestService;
 public class GuestRestController {
 	@Autowired
 	private GuestService guestService;
+	@RequestMapping(value = "guest_existed_id_check",
+					produces = "text/plain;charsetUTF-8")
+	public String guest_existed_id_check(@RequestParam String guest_id) {
+		String result="false";
+		if(guest_id.equals("user1") || guest_id.equals("user2")) {
+			result="true";
+		}else {
+			result="false";
+		}
+		System.out.println("-->"+guest_id+":"+result);
+		return result;
+	}
 	@RequestMapping(value = "/guest_insert_action",produces = "text/plain;charset=UTF-8")
 	public String guest_insert_action(@ModelAttribute Guest guest) throws Exception{
 		boolean insertOk = guestService.insertGuest(guest);

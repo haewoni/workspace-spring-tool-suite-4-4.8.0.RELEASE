@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="guest.css" type="text/css" media="screen" />
 <style type="text/css">
 input.error, textarea.error {
-	border: 1px solid red;
+	border: 1px dotted red;
 }
 
 label.error {
@@ -19,14 +19,16 @@ label.error {
 }
 
 .valid {
-	border: 1px solid green;
+	border: 1px dotted blue;
 }
 </style>
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript" src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.js	'></script>	
+<!-- 
 <script type="text/javascript" src='js/jquery.validate.js'></script>	
-<script type="text/javascript" src='js/additional-methods.js'></script>	
+ -->
 <script type="text/javascript">
 	/*****browser locale[navigator.language] 에따른message 동적설정***/
 	
@@ -275,11 +277,12 @@ label.error {
 		
 		/**방명록쓰기이벤트처리[동적이벤트처리]******/
 		// 현재DOM Tree에 동적이벤트추가에는 항상 상위엘레멘트의 참조가필요
+		/*
 		$('#guest_list').on('submit','#guest_write_form',function(e){
 			guest_write_action_function();
 			e.preventDefault();
 		});
-		
+		*/
 		
 		
 		/**방명록쓰기폼이벤트처리******/
@@ -298,31 +301,89 @@ label.error {
 		 https://jqueryvalidation.org/
 		    1. .validate() function은 DOM tree loading시에 미리 호출되어있어야한다.
 		    2. .validate() function은 DOM tree insert 될때 미리 호출되어있어야한다.
+		validate()
+		validate( { options } )
+		- debug: true일 경우 validation 후 submit을 수행하지 않음. (default: false)
+		- onfocusout: onblur 시 해당항목을 validation 할 것인지 여부 (default: true)
+		- rules: 각 항목1 별로 validation rule을 지정한다.
+		- messages: rules에서 정의된 조건으로 validation에 실패했을 때 화면에 표시할 메시지를 지정한다.
+		- errorPlacement: validator는 기본적으로 validation 실패 시 실패한 노드 우측에 실패 메시지를 표시하게 되어있다. 작동을 원하지 않으면 내용이 없는 errorPlacement를 선언한다.
+		- invalidHandler: validation 실패 시의 핸들러를 정의한다. 위의 경우 실패 메시지를 alert으로 표시하도록 되어 있다.
+		- submitHandler: 유효성 검사가 완료된 뒤 수행할 핸들러를 정의한다. 
+						 주의 할 점은 이 옵션을 명시할 경우 'submit' 이벤트만 발생하며 실제 FORM 전송은 일어나지 않는다는 것이다. 
+						 만약 submitHandler를 명시하지 않으면 유효성 검사 후 온전한 submit을 수행한다.
+
+		rules
+			required 	:입력 필수 항목설정. text, password, select, radio, checkbox type에 사용된다. 
+						 ex) required: true
+			remote   	:외부 URL을 이용한 validation이 필요한 경우 사용한다.
+			equalTo  	:다른 FORM 항목과 동일한 값인지 체크한다.
+			minlength	:최소 길이 체크. ex) minlength: 3
+			maxlength	:최대 길이 체크. ex) maxlength: 10
+			rangelength :길이 범위 체크. ex) rangelength[2, 6] (2글자 이상 6글자 이하)
+			min			:숫자의 최솟값 체크. ex) min: 13 (13보다 작을 경우 false)
+			max			:숫자의 최댓값 체크. ex) max: 5  (5보다 클 경우 false)
+			range		:숫자의 범위 체크. ex) range: [13, 24] (13보다 작거나 24보다 클 경우 false)
+			email		:이메일 형식의 값인지 체크. ex) email: true
+			url			:유효한 url 형식인지 체크. ex) url: true
+			date		:유효한 날짜 형식의 값인지 체크
+			dateISO		:유효한 국제표준 날짜 형식인지 체크. ex) dateISO: true
+			number		:유효한 숫자인지 체크. ex) number: true
+			digits		:유효한 digit 값인지 체크. number와 다른점은 양의 정수만 허용한다. 
+			             즉, 소수와 음수일 경우 false
+			creditcard	:유효한 카드번호 형식인지 체크. 
+						 공식페이지에서는 creditcard rule을 그대로 적용하지 말고 현지 사정에 맞게 수정하라고 권장한다. 
+						 ex) creditcard: true
 		 *****************************************/
 		/**방명록로그인이벤트처리.validate() function 호출[validator plugin]**/
 		$('#guest_login_form').validate({
 				rules:{
 					guest_id:{
 						required: true,
-						minlength:'3',
-						maxlength:'10'
+						minlength:3,
+						maxlength:10,
+						remote:{
+							url:'guest_existed_id_check',
+							type:'GET',
+							data:{
+								guest_id:function(){
+									return $('#guest_id').val();
+								}
+							}
+						}
+					},
+					guest_pass:{
+						required: true,
+						minlength:3,
+						maxlength:10
 					}
 				},
 				messages:{
 					guest_id:{
 						required: '아이디를 입력하세요',
-						minlength:"${0}글자이상입니다.",
-						maxlength:"${0}글자이하입니다."
+						minlength:'{0} 글자이상입니다.',
+						maxlength:'{0} 글자이하입니다.',
+						remote:'{0} 은 회원아이디가 아닙니다'
+					},
+					guest_pass:{
+						required: '패쓰워드를 입력하세요',
+						minlength:'{0} 글자이상입니다.',
+						maxlength:'{0} 글자이하입니다.'
 					}
+					
 				},
 				submitHandler:function(){
-					//유효성을 통과하면 호출
-					 alert('sumbit!!!');
-				}
+					guest_login_action_function();
+				},
+				errorClass:'error',
+				validClass:'valid'
 		});
 		
 		/**방명록쓰기이벤트처리.validate() function 호출[validator plugin]**/
-
+		$(document).one('DOMNodeInserted','#guest_write_form',function(e){
+			//$('#guest_write_form').validate();
+			alert(e);
+		});
 		/****************jQuery ajax global event handler************/
 		$(document).ajaxStart(function(){
 			console.log('div element jQuery wrapper:'+$("<div id='loading'>loading...</div>"));
